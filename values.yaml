@@ -24,8 +24,12 @@ fullnameOverride: ""
 
 config:
   sockperf:
-    protocol: tcp
-    port: 5000
-  iperf: 
-    protocol: tcp
-    port: 5002
+    tcp:
+      port: 5000
+    udp:
+      port: 5001
+  iperf:
+    tcp: 
+      port: 5002
+    udp:
+      port: 5003

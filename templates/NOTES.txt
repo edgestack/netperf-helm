@@ -8,8 +8,14 @@ By default, netperf will launch two PODs in each node, namely sockperf and iperf
 Sockperf server will listen on port 5000, while iperf server will listen on port 5002.
 In order to assess the network performance, the users need to following CLI.
 
-1. sockperf client
+1. sockperf TCP client
 $ sockperf -i SERVER_POD_IP -p 5000 -t 10 --tcp --pps=max
 
-2. iperf client
+2. sockperf UDP client
+$ sockperf -i SERVER_POD_IP -p 5001 -t 10 --pps=max
+
+3. iperf TCP client
 $ iperf -c SERVER_POD_IP -p 5002 -i 10 -P 4 -t 60
+
+4. iperf UDP client
+$ iperf -c SERVER_POD_IP -p 5003 -i 10 -P 4 -t 60 -u

@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sockperf
+  name: iperf-udp
   labels:
 {{ include "netperf.labels" . | indent 4 }}
 spec:
@@ -17,11 +17,11 @@ spec:
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       containers:
-        - name: sockperf
+        - name: iperf
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - name: sockperf
-              containerPort: {{ .Values.config.sockperf.port }}
-              protocol: TCP
-          command: ["/usr/bin/sockperf", "server", "-p", "{{ .Values.config.sockperf.port }}", "--{{ .Values.config.sockperf.protocol }}"]
+            - name: iperf
+              containerPort: {{ .Values.config.iperf.udp.port }}
+              protocol: UDP
+          command: ["/usr/bin/iperf", "-s", "-p", "{{ .Values.config.iperf.udp.port }}", "-u"]
