@@ -16,6 +16,18 @@ spec:
         app.kubernetes.io/name: {{ include "netperf.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - sockperf-udp
+              topologyKey: kubernetes.io/hostname
       containers:
         - name: sockperf
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
