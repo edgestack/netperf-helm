@@ -1,4 +1,4 @@
-# Copyright 2019 The SONA Authors.
+# Copyright 2024 The EdgeStack Authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,8 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+annotations:
+  category: Infrastructure
+  licenses: Apache-2.0
 apiVersion: v1
 appVersion: "1.0"
-description: A Helm chart for Kubernetes
+description: A Helm chart for measuring the container network performance.
 name: netperf
-version: 0.1.0
+version: 1.0.0
+icon: https://github.com/edgestack/helm/raw/master/assets/netperf.png
+keywords:
+- network
+- iperf
+maintainers:
+- name: Jian Li
+  url: https://github.com/edgestack/helm
+sources:
+- https://github.com/edgestack/netperf-helm
